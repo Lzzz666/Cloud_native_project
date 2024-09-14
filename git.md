@@ -71,7 +71,7 @@ git merge <branch_name>  # 合併其他分支
 ```
 
 Git 保存的不是變更集或者差異內容，而是一系列快照。
-Git 分支其實只是一個指向某提交的可移動輕量級指標， Git 預設分支名稱是 master， 隨著不斷地製作提交，master 分支會為你一直指向最後一個提交， 它在每次提交的時候都會自動向前移動。
+Git 分支其實只是一個指向某提交的可移動輕量級指標， Git 預設分支名稱是 main (之前是 master)， 隨著不斷地製作提交，main 分支會為你一直指向最後一個提交， 它在每次提交的時候都會自動向前移動。
 
 
 
@@ -80,7 +80,7 @@ Git 分支其實只是一個指向某提交的可移動輕量級指標， Git �
 
 執行
 ```
-git branch test  #創建 branch，Head 依然指向 master，仍然在 master 分支上工作。
+git branch test  #創建 branch，Head 依然指向 main，仍然在 main 分支上工作。
 ```
 
 ```
