@@ -88,7 +88,50 @@ git checkout test #切換過去該 branch，Head 指向 test，開始在 test �
 ```
 
 ### git repo 的過程中 .git 檔案裡的變化
-基本上 git repo 中都是利用 Hash 跟指標在運作。
+
+一開始：
+```
+git init
+```
+之後檔案夾裡的結構為:
+```
+Kevin-git-practice/
+│
+├── .
+├── ..
+└── ./git
+        ├── HEAD
+        ├── config
+        ├── description
+        ├── hooks
+        ├── info
+        ├── refs
+        └── objects
+```
+當新增一個 hello.py，並且：
+```
+git add .
+```
+Git 是將變更的檔案添加到 .git/index（也稱為 stage 或暫存區）中。這個 index 檔案會記錄檔案的檔案路徑、檔案內容的 hash（稱為 blob），以及這些檔案在下一次提交時應包含的狀態。
+
+之後提交：
+```
+git commit -m "feat: Added new feature" 
+```
+在 .git/objects/ 中創建新的 Blob、Tree、Commit 物件。
+最後會發現， .git 裡多了 COMMIT_EDITMSG 跟 logs，並且 index 和 objects 檔案有被更新過。  
+
+假設我們要建立一個分支：
+```
+git branch test-branch 
+```
+這時 .git 檔案裡的資訊尚未被更新。  
+當我們切換過去後：
+```
+git checkout test-branch 
+```
+可以發現檔案夾裡面 index 與 HEAD 被更新過了，此時 HEAD 會指向當前分之。
+
 
 ### commit message 怎麼寫比較好? 有什麼 style 嗎?
 > 目的是要講清楚，說明白你在幹嘛!!!
