@@ -58,28 +58,7 @@ npm -v # should print `10.8.2`
    - npx 可以直接執行 github 上的 repo
 
 
-### 1. Fibonacci
-
-```
-function fib(n){
-  if(n < 0){
-    return false;
-  }
-  if(n == 0){
-    return 0;
-  }
-  if(n == 1){
-    return 1;
-  }
-  return fib(n-1) + fib(n-2)
-}
-fib(0);
-fib(1);
-fib(5);
-fib(10);
-```
-
-## B. Fibonacci
+### B. Fibonacci
 
 ```
 function fib(n){
@@ -104,11 +83,111 @@ fib(10);
 ```
 // ary: number array
 function sum(ary) {
-  return arr.reduce((a,b)=>a+b)
+  return ary.reduce((a,b)=>a+b)
 }
 
-console.log(sum([1, 5, 3, 2])); // 11
+console.log(sum([1, 5, 3, 2]));
+```
+挑戰題 1  
+不考慮 foreach，我只想到其他 1 種寫法:
+recursion
+```
+function sum(ary) {
+  if(ary.length == 0){
+    return 0;
+  }
+  return ary[0] + sum(ary.slice(1));
+}
+
+console.log(sum([1, 5, 3, 2])); 
+```
+挑戰題 2
+```
+// input n return 1+2+3+...+n 
+function sum(n) {
+  return ary.reduce((a,b)=>a+b)
+}
+
+console.log(sum(n)); 
 ```
 
+## D. Stack
+```
+// stack.js
+export default class Stack {
+	// TODO: # 為 class 內的私有屬性。無法被外部存取
+  #items;
 
+  constructor() {
+    this.#items = [];
+  }
+
+  // 在 stack 頂部加入元素i
+  push(element) {
+		this.#items.push(element);
+  }
+
+  // 移除並回傳 stack 頂部的元素
+  pop() {
+		return this.#items.pop();
+  }
+
+  // 回傳 stack 頂部的元素，但不移除它
+  peek() {
+    return this.#items[this.#items.length-1];
+  }
+
+  // 檢查 stack 是否為空
+  isEmpty() {
+    return (this.#items.length) == 0 ? True : False;
+  }
+
+  // 回傳 stack 中元素的個數
+  size() {
+    return this.#items.length;
+  }
+
+  // 清空 stack 
+  clear() {
+    while(this.#items.length != 0){
+        this.#items.pop();
+    }
+  }
+
+  // 印出 stack 內容
+  print() {
+    for(let i = this.#items.length-1;i >= 0;i--){
+        console.log(this.#items[i]);
+    }
+  }
+}
+
+```
+
+```
+// main.js
+// TODO 以 Module 的方式匯入，例如:
+import Stack from './stack.js';
+
+let stack = new Stack();
+stack.print();
+
+stack.push(5);
+stack.push(8);
+stack.print();
+
+// TODO: 每個有實做到的函數都做測試，另外也要多假設幾種情況，例如：空陣列又被pop 等等，觀察是否溢位。
+stack.push(5);
+stack.push(8);
+stack.push(89);
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
+console.log("stack isEmpty? " + stack.isEmpty());
+console.log("peek:"+stack.peek());
+stack.print();
+stack.clear();
+console.log("stack isEmpty" + stack.isEmpty());
+```
 
