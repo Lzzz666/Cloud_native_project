@@ -16,6 +16,17 @@ $ npm i --save-dev express  //可以觀察到 express 放在 devDependencies
 ```
 
 ## package.json 中的 scripts 這個區塊怎麼用？
+- 透過 package.json 的 scripts 可以設定自己的快捷指令
+- 例如:
+```
+"scripts":{
+  "start": "node index.js" 
+}
+```
+```
+npm start //之後要啟動專案就可以直接使用
+```
+
 
 ## Port number 要怎麼以環境變數來設定？
 
