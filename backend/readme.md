@@ -1,6 +1,19 @@
 # Backend 
 
 ## package.json 中的 dependencies 與 devDependencies 分別是什麼
+官方說法:
+> "dependencies": Packages required by your application in production. (這個產品要用甚麼套件)  
+> "devDependencies": Packages that are only needed for local development and testing. (開發或測試的過程要用到甚麼套件)
+
+就像是說有些套件你只有開發的時候要使用就可以只放在 devDependencies，可以把測試跟開發的套件與要上線使用的套件分開!  
+怎麼用? 
+透過 
+```
+$ npm i --save express // 可以觀察到 express 放在 dependencies
+```
+```
+$ npm i --save-dev express  //可以觀察到 express 放在 devDependencies  
+```
 
 ## package.json 中的 scripts 這個區塊怎麼用？
 
