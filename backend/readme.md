@@ -59,6 +59,38 @@ app.listen(port, () => {
 
 ## 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
 
+#### CJS: CommonJS
+```
+//myAdd.js
+module.exports.add = function(a, b) {  
+        return a + b;
+} 
+```
+```
+//main.js
+const add = require('./myAdd')
+
+console.log(add(5, 5)) // 10
+```
+
+#### ESM: ES module
+```
+// myAdd.js
+export function add(a, b) {
+  return a + b;
+}
+```
+```
+// main.js
+import add from './myAdd.js';
+console.log(add(2, 3)); // 輸出: 5
+```
+
+> CommonJS loads modules synchronously, ES modules are asynchronous
+
+這裡 synchronously 的意思是 blocking，就是使用 require 時，module 的載入是接續的，如果一個 module 載入很久，則會導致接下來的程式碼無法被執行，容易降低 performance。
+反之 ESM 是 asynchronous， 會有較好的 performance。
+
 進階題:
 - [localhost](http://localhost) 是什麼？
 - `curl` 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
