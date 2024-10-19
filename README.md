@@ -1,4 +1,4 @@
-# Kevin-git-practice
+# Cloud_native_project
 HW1 in cloud system dev class
 
 ## 9/12 上課心得
